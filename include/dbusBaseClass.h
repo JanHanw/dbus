@@ -17,6 +17,13 @@
 #define WRITE_LOG(pLog, pInfo, level) \
     cout << pInfo << endl;
 
+#ifndef DBUS_MESSAGE_TYPE_METHOD_CALL
+    #define DBUS_MESSAGE_TYPE_METHOD_CALL 1
+#endif
+
+#ifndef DBUS_MESSAGE_TYPE_SIGNAL
+    #define DBUS_MESSAGE_TYPE_SIGNAL 4
+#endif
 
 struct DBusParam
 {
@@ -63,8 +70,7 @@ public:
 public:
     bool DbusSendMessage(DBusParam& sendInfo);
 
-private:
-    bool SendSignal(DBusParam& sendInfo);
+    bool DbusSendSignal(DBusParam& sendInfo);
 };
 
 

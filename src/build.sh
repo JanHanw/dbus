@@ -12,7 +12,11 @@ buildLine="$ccflag $midFlag $includePath $sourceFiles $objPro"
 echo $buildLine && $buildLine
 
 
-
+sourceFiles="dbusCliTest.cpp "
+objPro="-o ../bin/dbusCliTest"
+libs="-L../lib -ldbusBaseClass -ldbus-1 "
+buildLine="$ccflag $includePath $sourceFiles $objPro $libs "
+echo $buildLine && $buildLine
 
 sourceFiles="dbusSrvTest.cpp "
 objPro="-o ../bin/dbusSrvTest"

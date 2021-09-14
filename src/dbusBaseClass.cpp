@@ -331,10 +331,11 @@ DBusBaseClien::~DBusBaseClien()
 bool DBusBaseClien::DbusSendMessage(DBusParam& sendInfo)
 {
 
+    return true;
 }
 
 
-bool DBusBaseClien::SendSignal(DBusParam& sendInfo)
+bool DBusBaseClien::DbusSendSignal(DBusParam& sendInfo)
 {
     if (!CheckNameFormat(sendInfo.dbusName.c_str(), sendInfo.interName.c_str())) {
         return false;
@@ -372,6 +373,7 @@ bool DBusBaseClien::SendSignal(DBusParam& sendInfo)
             WRITE_LOG(pLog, "绑定int参数时，内存不足，信号发送失败！", ERR_LOG);
             return false;
         }
+        ++it;
     }
 
     list<string>::iterator it1 = sendInfo.strParam.begin();
@@ -382,6 +384,7 @@ bool DBusBaseClien::SendSignal(DBusParam& sendInfo)
             WRITE_LOG(pLog, "绑定int参数时，内存不足，信号发送失败！", ERR_LOG);
             return false;
         }
+        ++it1;
     }
 
     dbus_uint32_t serial = 0;
